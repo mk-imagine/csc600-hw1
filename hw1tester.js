@@ -1,130 +1,17 @@
-/* ==========================================================================  **
-## HW Instructions
-
-See this Google doc for clarifications:
-
-https://docs.google.com/document/d/1Azh7c_sMtjHApLnQ-AamZ_LRs0Gqlc_nSCPp4zSbFJM/edit?usp=sharing
-
-** ==========================================================================  **
-
-
-1. Push your solution, contained entirely in hw1.ts, back to the github classroom
-   repository. Please make sure you solution compiles!!! 
-
-   To run the typescript compiler (`tsc`), make sure you have it installed
-   ```
-   tsc -v
-   >> Version 4.4.3
-   ```
-   Then run the compiler
-   ```
-   tsc --strict --target es2019 --module commonjs hw1.ts
-   ```
-   to produce a file `hw1.js`. If we cannot compile your solution with `tsc`, we
-   will not grade your submission. Even if you are looking for partial credit,
-   your entire hw1.ts must compile, and we must be able to run the compiled js file
-   in `node`.
-2. **Do not** change any of the function interfaces.
-3. **Do not** use any external libraries.
-4. Replace `throw Error("TODO")` with your code. If you do not attempt a problem,
-   please leave the `throw Error("TODO")` code there unmodified.
-5. Always remember to check the function input types and the output types.
-6. You can create any other additional helper functions that you would like.
-7. You can leave testing code in provided that your code compiles and does not
-   depend on external libraries. Remember it is up to you to test your own code.
-8. You can use your solutions to questions in this assignment to answer other question
-   in this assignment.
-
-** ============================================================================ */
-
-
-/* ==========================================================================  **
-## Honor Pledge
-** ============================================================================ */
-
-export const HONOR_PLEDGE = "I pledge on my honor that this assignment is my own work.";
-export const SIGNATURE = "Mark Kim"; // TODO: FILL ME IN
-
-// If you used any resources, please list them here
-export const RESOURCES_CONSULTED = [
-    "www.google.com",
-    "https://holycoders.com/javscript-copy-array/"
-];
-
-
-/* ==========================================================================  **
-## 1. Fun with TypeScript Arrays (40 pts)
-
-This problem is a warmup to get you familiar with TypeScript syntax.
-Throughout these problems, please just use basic TypeScript features:
-for loops, conditionals, basic arithmetic expressions, basic string operations.
-
-Hint: The `for` `of` construct below can be used to traverse an array.
-
-const arr = [1, 2, 3];
-for (const x of arr) {
-    console.log(x);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const hw1_js_1 = require("./hw1.js");
+const mArrayIn = [[], [1, 2, 3], [-1, -2, 3, 10]];
+const multResult = [1, 6, 60];
+console.log("Testing multArray:");
+for (let i = 0; i < mArrayIn.length; i++) {
+    console.log(`\tArray ${i + 1}: ${(0, hw1_js_1.multArray)(mArrayIn[i]) == multResult[i] ? "Success" : "Fail"}`);
 }
->> 1
->> 2
->> 3
-** ============================================================================ */
-
-
-
-/* ----------------------------------------------------- **
-### 1a. Complete the function definition below. (8 pts)
-
-`multArray` takes an array of numbers and produces the product of all the numbers in the array.
-
-Example:
-  multArray([]) = 1
-
-Example:
-  multArray([1, 2, 3]) = 6
-
-Example:
-  multArray([-1, -2, 3, 10]) = 60
-** ----------------------------------------------------- */
-
-export function multArray(arr: number[]): number {
-    let product = 1;
-    for (const x of arr) {
-      product *= x;
-    }
-    return product;
+const maxResult = [Number.POSITIVE_INFINITY, 3, 10];
+console.log("Testing maxArray:");
+for (let i = 0; i < mArrayIn.length; i++) {
+    console.log(`\tArray ${i + 1}: ${(0, hw1_js_1.maxArray)(mArrayIn[i]) == maxResult[i] ? "Success" : "Fail"}`);
 }
-
-
-/* ----------------------------------------------------- **
-### 1b. Complete the function definition below. (8 pts)
-
-`maxArray` takes an array of numbers and returns the largest number in the array.
-
-Example:
-  maxArray([]) = Number.POSITIVE_INFINITY
-
-Example:
-  maxArray([1, 2, 3]) = 3
-
-Example:
-  maxArray([-1, -2, 3, 10]) = 10
-** ----------------------------------------------------- */
-
-export function maxArray(arr: number[]): number {
-    if (arr.length == 0) {
-      return Number.POSITIVE_INFINITY;
-    }
-    let max = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i] > max) {
-        max = arr[i];
-      }
-    }
-    return max;
-}
-
-
 /* ----------------------------------------------------- **
 ### 1c. Complete the function definition below. (8 pts)
 
@@ -142,21 +29,12 @@ Example:
   longestWord(["csc600", "is", "fun"]) = "csc600"
 
 ** ----------------------------------------------------- */
-
-export function longestWord(arr: string[]): string {
-  if (arr.length == 0) {
-    return "";
-  }
-  let longest = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i].length >= longest.length) {
-      longest = arr[i];
-    }
-  }
-  return longest;
+const wdArrayIn = [[], ["hello", "world"], ["csc600", "is", "as", "fun", "as", "csc620"]];
+const lwResult = ["", "world", "csc620"];
+console.log("Testing longestWord:");
+for (let i = 0; i < wdArrayIn.length; i++) {
+    console.log(`\tArray ${i + 1}: ${(0, hw1_js_1.longestWord)(wdArrayIn[i]) == lwResult[i] ? "Success" : "Fail"}`);
 }
-
-
 /* ----------------------------------------------------- **
 ### 1d. Complete the function definition below. (8 pts)
 
@@ -173,21 +51,11 @@ Example:
 Example:
   shortestWord(["csc600", "is", "fun"]) = "is"
 ** ----------------------------------------------------- */
-
-export function shortestWord(arr: string[]): string {
-  if (arr.length == 0) {
-    return "";
-  }
-  let shortest = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i].length < shortest.length) {
-      shortest = arr[i];
-    }
-  }
-  return shortest;
+const swResult = ["", "hello", "is"];
+console.log("Testing shortestWord:");
+for (let i = 0; i < wdArrayIn.length; i++) {
+    console.log(`\tArray ${i + 1}: ${(0, hw1_js_1.shortestWord)(wdArrayIn[i]) == swResult[i] ? "Success" : "Fail"}`);
 }
-
-
 /* ----------------------------------------------------- **
 ### 1e. Complete the function definition below. (8 pts)
 
@@ -208,12 +76,13 @@ Example:
 Example:
   shortestAndLongestWord(["csc600", "is", "fun"]) = ["is", "csc600"]
 ** ----------------------------------------------------- */
-
-export function shortestAndLongestWord(arr: string[]): [string, string] {
-    return [shortestWord(arr), longestWord(arr)];
+let slwResult = [["", ""], ["hello", "world"], ["is", "csc620"]];
+console.log("Testing shortestAndLongestWord:");
+let slwinput = (0, hw1_js_1.shortestAndLongestWord)(wdArrayIn[0]);
+for (let i = 0; i < wdArrayIn.length; i++) {
+    console.log(`\tArray ${i + 1}: ${(0, hw1_js_1.shortestAndLongestWord)(wdArrayIn[i])[0] === slwResult[i][0] &&
+        (0, hw1_js_1.shortestAndLongestWord)(wdArrayIn[i])[1] === slwResult[i][1] ? "Success" : "Fail"}`);
 }
-
-
 /* ==========================================================================  **
 ## 2. Pure Functions (30 pts)
 
@@ -228,14 +97,13 @@ Throughout these problems, please just use basic TypeScript features:
 for loops, conditionals, basic arithmetic expressions, basic string operations.
 
 ** ============================================================================ */
-
 /* ----------------------------------------------------- **
 ### 2a. Complete the function definition below. (10 pts)
 
 `impureNegate` takes an array of numbers and replaces each element in the array
 with its negation. Thus `impureNegate` is not a pure function. This style of
-coding might be what you are familiar with from an imperative programming (e.g., 
-C/Java) background. Note that `impureNegate` returns nothing, i.e., has 
+coding might be what you are familiar with from an imperative programming (e.g.,
+C/Java) background. Note that `impureNegate` returns nothing, i.e., has
 return type of `void`.
 
 Example:
@@ -257,14 +125,16 @@ Example:
   console.log(arr2);
   >> [-1, -2, -3]
 ** ----------------------------------------------------- */
-
-export function impureNegate(arr: number[]): void {
-    for (let i = 0; i < arr.length; i++) {
-      arr[i] *= -1;
-    }
+const arr0 = [1, 2, 3];
+const arr1 = [1, 2, 3];
+console.log("Testing impureNegate:");
+console.log(`\tArray0 after initialization: ${arr0}`);
+for (let i = 1; i < 4; i++) {
+    (0, hw1_js_1.impureNegate)(arr0);
+    console.log(`\tArray0 after impureNegate #${i}: ${arr0}`);
 }
-
-
+(0, hw1_js_1.impureNegate)(arr1);
+console.log(`\n\tArray1 after impureNegate: ${arr1}`);
 /* ----------------------------------------------------- **
 ### 2b. Complete the function definition below. (10 pts)
 
@@ -296,17 +166,27 @@ Example:
   console.log(arr);
   >> [1, 2, 3, 4]
 ** ----------------------------------------------------- */
-
-export function copyNumArray(arr: number[]): number[] {
-    return [...arr];
-}
-
+const arr2 = [1, 2, 3];
+console.log("Testing impureNegate:");
+console.log(`\tArray2 after initialization: ${arr2}`);
+const arr3 = (0, hw1_js_1.copyNumArray)(arr2);
+console.log(`\tArray3 after copyNumArray(arr2): ${arr3}`);
+(0, hw1_js_1.impureNegate)(arr2);
+console.log(`\tArray2 after impureNegate: ${arr2}`);
+console.log(`\tValue of Array3: ${arr3}`);
+const arr4 = [1, 2, 3, 4];
+console.log(`\timpureNegate(copyNumArray(arr4)): ${(0, hw1_js_1.impureNegate)((0, hw1_js_1.copyNumArray)(arr4))}`);
+const arr5 = (0, hw1_js_1.copyNumArray)(arr4);
+console.log(`\tArray5 after copyNumArray(arr4): ${arr5}`);
+(0, hw1_js_1.impureNegate)(arr5);
+console.log(`\tArray5 after impureNegate: ${arr5}`);
+console.log(`\tValue of Array4: ${arr4}`);
 /* ----------------------------------------------------- **
 ### 2c. Complete the function definition below. (10 pts)
 
 `pureNegate` is a *pure* function that increments each element of an array
 without modifying the array passed in. Now would be a good time to compare
-and contrast `pureNegate` and `imppureNegate` to see how different the
+and contrast `pureNegate` and `impureNegate` to see how different the
 reasoning with a pure and impure function is.
 
 Example:
@@ -320,16 +200,13 @@ Example:
   console.log(arr);
   >> [1, 2, 3]
 ** ----------------------------------------------------- */
-
-export function pureNegate(arr: number[]): number[] {
-    let arr1 = [...arr];
-    for (let i = 0; i < arr.length; i++) {
-      arr1[i] *= -1;
-    }
-    return arr1;
-}
-
-
+const arr6 = [1, 2, 3];
+console.log("Testing pureNegate:");
+console.log(`\tArray6 after initialization: ${arr6}`);
+console.log(`\tpureNegate #1 of Array6: ${(0, hw1_js_1.pureNegate)(arr6)}`);
+console.log(`\tArray6 after pureNegate #1: ${arr6}`);
+console.log(`\tpureNegate #2 of Array6: ${(0, hw1_js_1.pureNegate)(arr6)}`);
+console.log(`\tArray6 after pureNegate #2: ${arr6}`);
 /* ==========================================================================  **
 ## 3. Other TypeScript Features (30 pts)
 
@@ -339,8 +216,6 @@ these language features in other languages (e.g., C/Java). We'll also get more p
 with writing pure functions.
 
 ** ============================================================================ */
-
-
 /* ----------------------------------------------------- **
 ### 3a. Complete the function definition below. (10 pts)
 
@@ -360,12 +235,6 @@ Example:
   console.log(arr2);
   >> [1, 2, 3, 4]
 ** ----------------------------------------------------- */
-
-export function copyArray<T>(arr: T[]): T[] {
-    return [...arr];
-}
-
-
 /* ----------------------------------------------------- **
 ### 3b. Complete the function definition below. (10 pts)
 
@@ -390,12 +259,6 @@ for (const [key, val] of Object.entries(dict)) {
 >> "hello" 1
 >> "world" 2
 ** ----------------------------------------------------- */
-
-export function copyDictionary(dict: {[key: string]: number}): {[key: string]: number} {
-    return {...dict};
-}
-
-
 /* ----------------------------------------------------- **
 ### 3c. Complete the function definition below. (10 pts)
 
@@ -418,18 +281,6 @@ Example:
   console.log(rec2);
   >> {myStr: "hello", myNum: 42, myDict: {"csc600": -1, "is": -2, "fun": 3}}
 ** ----------------------------------------------------- */
-
-type tsRecord = {
-    myStr: string,
-    myNum: number,
-    myDict: {[key: string]: number}
-}
-
-export function copyTsRecord(tsRec: tsRecord): tsRecord {
-    throw Error("TODO");
-}
-
-
 /* ==========================================================================  **
 ## Bonus. (10 pts)
 
@@ -438,13 +289,3 @@ It behaves just like tsRecord, except that the dictionary can contain values of
 any type T. Write the `copyGenericTsRecord` function. Make sure to also copy the
 dictionary!
 ** ============================================================================ */
-
-type genericTsRecord<T> = {
-    myStr: string,
-    myNum: number,
-    myDict: {[key: string]: T}
-}
-
-export function copyGenericTsRecord<T>(tsRec: genericTsRecord<T>): genericTsRecord<T> {
-    throw Error("BONUS TODO");
-}
