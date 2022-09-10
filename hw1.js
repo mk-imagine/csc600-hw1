@@ -38,7 +38,7 @@ https://docs.google.com/document/d/1Azh7c_sMtjHApLnQ-AamZ_LRs0Gqlc_nSCPp4zSbFJM/
 
 ** ============================================================================ */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.copyGenericTsRecord = exports.copyTsRecord = exports.copyDictionary = exports.copyArray = exports.pureNegate = exports.copyNumArray = exports.impureNegate = exports.shortestAndLongestWord = exports.shortestWord = exports.longestWord = exports.maxArray = exports.multArray = exports.RESOURCES_CONSULTED = exports.SIGNATURE = exports.HONOR_PLEDGE = void 0;
+exports.copyGenericDictionary = exports.copyGenericTsRecord = exports.copyTsRecord = exports.copyDictionary = exports.copyArray = exports.pureNegate = exports.copyNumArray = exports.impureNegate = exports.shortestAndLongestWord = exports.shortestWord = exports.longestWord = exports.maxArray = exports.multArray = exports.RESOURCES_CONSULTED = exports.SIGNATURE = exports.HONOR_PLEDGE = void 0;
 /* ==========================================================================  **
 ## Honor Pledge
 ** ============================================================================ */
@@ -278,6 +278,11 @@ Example:
   >> [1, 2, 3, 4]
 ** ----------------------------------------------------- */
 function copyNumArray(arr) {
+    // let arr1: number[] = [];
+    // for (let i = 0; i < arr.length; i++) {
+    //   arr1[i] = arr[i];
+    // }
+    // return arr1;
     return [...arr];
 }
 exports.copyNumArray = copyNumArray;
@@ -337,6 +342,11 @@ Example:
   >> [1, 2, 3, 4]
 ** ----------------------------------------------------- */
 function copyArray(arr) {
+    // let arr1: T[] = [];
+    // for (let i = 0; i < arr.length; i++) {
+    //   arr1[i] = arr[i];
+    // }
+    // return arr1;
     return [...arr];
 }
 exports.copyArray = copyArray;
@@ -365,14 +375,20 @@ for (const [key, val] of Object.entries(dict)) {
 >> "world" 2
 ** ----------------------------------------------------- */
 function copyDictionary(dict) {
-    return { ...dict };
+    let dict1 = {};
+    for (const [key, val] of Object.entries(dict)) {
+        dict1[key] = val;
+    }
+    return dict1;
+    // return {...dict};
 }
 exports.copyDictionary = copyDictionary;
 function copyTsRecord(tsRec) {
     return {
         myStr: tsRec.myStr,
         myNum: tsRec.myNum,
-        myDict: { ...tsRec.myDict }
+        myDict: copyDictionary(tsRec.myDict)
+        // myDict: {...tsRec.myDict}
     };
 }
 exports.copyTsRecord = copyTsRecord;
@@ -380,7 +396,17 @@ function copyGenericTsRecord(tsRec) {
     return {
         myStr: tsRec.myStr,
         myNum: tsRec.myNum,
-        myDict: { ...tsRec.myDict }
+        myDict: copyGenericDictionary(tsRec.myDict)
+        // myDict: {...tsRec.myDict}
     };
 }
 exports.copyGenericTsRecord = copyGenericTsRecord;
+function copyGenericDictionary(dict) {
+    let dict1 = {};
+    for (const [key, val] of Object.entries(dict)) {
+        dict1[key] = val;
+    }
+    return dict1;
+    // return [...dict1];
+}
+exports.copyGenericDictionary = copyGenericDictionary;

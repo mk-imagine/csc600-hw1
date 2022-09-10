@@ -88,7 +88,7 @@ Example:
 ** ----------------------------------------------------- */
 
 export function multArray(arr: number[]): number {
-    let product = 1;
+    let product: number = 1;
     for (const x of arr) {
       product *= x;
     }
@@ -115,7 +115,7 @@ export function maxArray(arr: number[]): number {
     if (arr.length == 0) {
       return Number.POSITIVE_INFINITY;
     }
-    let max = arr[0];
+    let max: number = arr[0];
     for (let i = 1; i < arr.length; i++) {
       if (arr[i] > max) {
         max = arr[i];
@@ -147,7 +147,7 @@ export function longestWord(arr: string[]): string {
   if (arr.length == 0) {
     return "";
   }
-  let longest = arr[0];
+  let longest: string = arr[0];
   for (let i = 1; i < arr.length; i++) {
     if (arr[i].length >= longest.length) {
       longest = arr[i];
@@ -178,7 +178,7 @@ export function shortestWord(arr: string[]): string {
   if (arr.length == 0) {
     return "";
   }
-  let shortest = arr[0];
+  let shortest: string = arr[0];
   for (let i = 1; i < arr.length; i++) {
     if (arr[i].length < shortest.length) {
       shortest = arr[i];
@@ -298,7 +298,12 @@ Example:
 ** ----------------------------------------------------- */
 
 export function copyNumArray(arr: number[]): number[] {
-    return [...arr];
+  // let arr1: number[] = [];
+  // for (let i = 0; i < arr.length; i++) {
+  //   arr1[i] = arr[i];
+  // }
+  // return arr1;
+  return [...arr];
 }
 
 /* ----------------------------------------------------- **
@@ -322,7 +327,7 @@ Example:
 ** ----------------------------------------------------- */
 
 export function pureNegate(arr: number[]): number[] {
-    let arr1 = [...arr];
+    let arr1: number[] = [...arr];
     for (let i = 0; i < arr.length; i++) {
       arr1[i] *= -1;
     }
@@ -362,6 +367,11 @@ Example:
 ** ----------------------------------------------------- */
 
 export function copyArray<T>(arr: T[]): T[] {
+    // let arr1: T[] = [];
+    // for (let i = 0; i < arr.length; i++) {
+    //   arr1[i] = arr[i];
+    // }
+    // return arr1;
     return [...arr];
 }
 
@@ -392,7 +402,12 @@ for (const [key, val] of Object.entries(dict)) {
 ** ----------------------------------------------------- */
 
 export function copyDictionary(dict: {[key: string]: number}): {[key: string]: number} {
-    return {...dict};
+  let dict1: {[key: string]: number} = {};
+  for (const [key, val] of Object.entries(dict)) {
+    dict1[key] = val;
+  }
+  return dict1;
+  // return {...dict};
 }
 
 
@@ -429,7 +444,8 @@ export function copyTsRecord(tsRec: tsRecord): tsRecord {
     return {
       myStr: tsRec.myStr,
       myNum: tsRec.myNum,
-      myDict: {...tsRec.myDict}
+      myDict: copyDictionary(tsRec.myDict)
+      // myDict: {...tsRec.myDict}
     };
 }
 
@@ -453,6 +469,16 @@ export function copyGenericTsRecord<T>(tsRec: genericTsRecord<T>): genericTsReco
   return {
     myStr: tsRec.myStr,
     myNum: tsRec.myNum,
-    myDict: {...tsRec.myDict}
+    myDict: copyGenericDictionary(tsRec.myDict)
+    // myDict: {...tsRec.myDict}
   };
+}
+
+export function copyGenericDictionary<T>(dict: {[key: string]: T}): {[key: string]: T} {
+  let dict1: {[key: string]: T} = {};
+  for (const [key, val] of Object.entries(dict)) {
+    dict1[key] = val;
+  }
+  return dict1;
+  // return [...dict1];
 }
