@@ -320,6 +320,7 @@ const rec = {
 };
 const rec2 = (0, hw1_js_1.copyTsRecord)(rec);
 rec.myStr = "foobar";
+console.log(rec);
 console.log(rec2);
 /* ==========================================================================  **
 ## Bonus. (10 pts)
@@ -341,4 +342,5 @@ const rec3 = {
 };
 const rec4 = (0, hw1_js_1.copyGenericTsRecord)(rec3);
 rec3.myStr = "foobar";
+console.log(rec3);
 console.log(rec4);

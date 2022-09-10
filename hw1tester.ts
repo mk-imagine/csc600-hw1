@@ -357,6 +357,7 @@ const rec = {
 };
 const rec2 = copyTsRecord(rec);
 rec.myStr = "foobar";
+console.log(rec);
 console.log(rec2);
 
 
@@ -381,4 +382,5 @@ const rec3 = {
 };
 const rec4 = copyGenericTsRecord(rec3);
 rec3.myStr = "foobar";
+console.log(rec3);
 console.log(rec4);
