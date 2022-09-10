@@ -2,6 +2,12 @@ import { multArray, maxArray, longestWord, shortestWord, shortestAndLongestWord,
     impureNegate, copyNumArray, pureNegate, copyArray, copyDictionary,
     copyTsRecord, copyGenericTsRecord, } from "./hw1.js";
 
+/*
+*   This suite of tests is incomplete. A separate 
+*   test suite was created before work was started
+*   on this suite.
+*/
+
 describe("1. Fun with TypeScript Arrays (40 pts):", () => {
     const numArray = [[], [1,2,3], [-1, -2, 3, 10]];
 
