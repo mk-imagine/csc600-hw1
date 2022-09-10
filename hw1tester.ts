@@ -147,13 +147,13 @@ const arr0 = [1, 2, 3];
 const arr1 = [1, 2, 3];
 
 console.log("Testing impureNegate:");
-console.log(`\tArray0 after initialization: ${arr0}`);
+console.log(`\tArray0 after initialization:\t${arr0}`);
 for (let i = 1; i < 4; i++) {
   impureNegate(arr0);
-  console.log(`\tArray0 after impureNegate #${i}: ${arr0}`);
+  console.log(`\tArray0 after impureNegate #${i}:\t${arr0}`);
 }
 impureNegate(arr1);
-console.log(`\n\tArray1 after impureNegate: ${arr1}`);
+console.log(`\n\tArray1 after impureNegate:\t${arr1}`);
 
 /* ----------------------------------------------------- **
 ### 2b. Complete the function definition below. (10 pts)
@@ -189,22 +189,25 @@ Example:
 
 const arr2 = [1, 2, 3];
 
-console.log("Testing impureNegate:");
-console.log(`\tArray2 after initialization: ${arr2}`);
+console.log("Testing copyNumArray:");
+console.log("  Test 1:");
+console.log(`\tArray2 after initialization:\t\t${arr2}`);
 const arr3 = copyNumArray(arr2);
-console.log(`\tArray3 after copyNumArray(arr2): ${arr3}`);
+console.log(`\tArray3 after copyNumArray(arr2):\t${arr3}`);
 impureNegate(arr2);
-console.log(`\tArray2 after impureNegate: ${arr2}`);
-console.log(`\tValue of Array3: ${arr3}`);
+console.log(`\tArray2 after impureNegate:\t\t${arr2}`);
+console.log(`\tValue of Array3:\t\t\t${arr3}`);
 
+
+console.log("  Test 2:");
 const arr4 = [1, 2, 3, 4];
-console.log(`\timpureNegate(copyNumArray(arr4)): ${impureNegate(copyNumArray(arr4))}`)
+console.log(`\timpureNegate(copyNumArray(arr4)):\t${impureNegate(copyNumArray(arr4))}`)
 
 const arr5 = copyNumArray(arr4);
-console.log(`\tArray5 after copyNumArray(arr4): ${arr5}`);
+console.log(`\tArray5 after copyNumArray(arr4):\t${arr5}`);
 impureNegate(arr5);
-console.log(`\tArray5 after impureNegate: ${arr5}`);
-console.log(`\tValue of Array4: ${arr4}`);
+console.log(`\tArray5 after impureNegate:\t\t${arr5}`);
+console.log(`\tValue of Array4:\t\t\t${arr4}`);
 
 /* ----------------------------------------------------- **
 ### 2c. Complete the function definition below. (10 pts)
@@ -229,11 +232,11 @@ Example:
 const arr6 = [1, 2, 3];
 
 console.log("Testing pureNegate:");
-console.log(`\tArray6 after initialization: ${arr6}`);
-console.log(`\tpureNegate #1 of Array6: ${pureNegate(arr6)}`);
-console.log(`\tArray6 after pureNegate #1: ${arr6}`);
-console.log(`\tpureNegate #2 of Array6: ${pureNegate(arr6)}`);
-console.log(`\tArray6 after pureNegate #2: ${arr6}`);
+console.log(`\tArray6 after initialization:\t${arr6}`);
+console.log(`\tpureNegate #1 of Array6:\t${pureNegate(arr6)}`);
+console.log(`\tArray6 after pureNegate #1:\t${arr6}`);
+console.log(`\tpureNegate #2 of Array6:\t${pureNegate(arr6)}`);
+console.log(`\tArray6 after pureNegate #2:\t${arr6}`);
 
 /* ==========================================================================  **
 ## 3. Other TypeScript Features (30 pts)
@@ -266,8 +269,20 @@ Example:
   >> [1, 2, 3, 4]
 ** ----------------------------------------------------- */
 
+console.log("Testing copyArray:");
+console.log("  Test 1:");
+const arr3a0 = ["csc600", "is", "fun"];
+const arr3a1 = copyArray(arr3a0);
+arr3a0[0] = "life";
+console.log(`\tArray1: [${arr3a0}]`);
+console.log(`\tArray2: [${arr3a1}]`);
 
-
+console.log("  Test 2:");
+const arr3a2 = [1, 2, 3, 4];
+const arr3a3 = copyArray(arr3a2);
+arr3a2[0] = -1;
+console.log(`\tArray3: [${arr3a2}]`);
+console.log(`\tArray4: [${arr3a3}]`);
 
 /* ----------------------------------------------------- **
 ### 3b. Complete the function definition below. (10 pts)
@@ -294,8 +309,18 @@ for (const [key, val] of Object.entries(dict)) {
 >> "world" 2
 ** ----------------------------------------------------- */
 
-
-
+console.log("Testing copyDictionary:");
+const dict3b0 = {
+  "hello": 1,
+  "world": 2
+};
+// console.log(`\tdict:\t\t\t{"${Object.keys(dict3b0)[0]}": ${dict3b0["hello"]}, "${Object.keys(dict3b0)[1]}": ${dict3b0["world"]}}`)
+const dict3b2 = copyDictionary(dict3b0);
+// console.log(`\tdict2 (copy of dict):\t{"${Object.keys(dict3b2)[0]}": ${dict3b2["hello"]}, "${Object.keys(dict3b2)[1]}": ${dict3b2["world"]}}`)
+dict3b0["hello"] = -1;
+// console.log(`\tdict after modified:\t{"${Object.keys(dict3b0)[0]}": ${dict3b0["hello"]}, "${Object.keys(dict3b0)[1]}": ${dict3b0["world"]}}`)
+// console.log(`\tdict2:\t\t\t{"${Object.keys(dict3b2)[0]}": ${dict3b2["hello"]}, "${Object.keys(dict3b2)[1]}": ${dict3b2["world"]}}`)
+console.log(dict3b2);
 
 /* ----------------------------------------------------- **
 ### 3c. Complete the function definition below. (10 pts)
@@ -320,7 +345,19 @@ Example:
   >> {myStr: "hello", myNum: 42, myDict: {"csc600": -1, "is": -2, "fun": 3}}
 ** ----------------------------------------------------- */
 
-
+console.log("Testing copyTsRecord:");
+const rec = {
+  myStr: "hello",
+  myNum: 42,
+  myDict: {
+      "csc600": -1,
+      "is": -2,
+      "fun": 3
+  }
+};
+const rec2 = copyTsRecord(rec);
+rec.myStr = "foobar";
+console.log(rec2);
 
 
 /* ==========================================================================  **
@@ -332,3 +369,16 @@ any type T. Write the `copyGenericTsRecord` function. Make sure to also copy the
 dictionary!
 ** ============================================================================ */
 
+console.log("Testing copyGenericTsRecord:");
+const rec3 = {
+  myStr: "hello",
+  myNum: 42,
+  myDict: {
+      "csc600": "notCSC620",
+      "is": -2,
+      "fun": 3
+  }
+};
+const rec4 = copyGenericTsRecord(rec3);
+rec3.myStr = "foobar";
+console.log(rec4);

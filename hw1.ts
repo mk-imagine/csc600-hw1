@@ -426,7 +426,11 @@ type tsRecord = {
 }
 
 export function copyTsRecord(tsRec: tsRecord): tsRecord {
-    throw Error("TODO");
+    return {
+      myStr: tsRec.myStr,
+      myNum: tsRec.myNum,
+      myDict: {...tsRec.myDict}
+    };
 }
 
 
@@ -446,5 +450,9 @@ type genericTsRecord<T> = {
 }
 
 export function copyGenericTsRecord<T>(tsRec: genericTsRecord<T>): genericTsRecord<T> {
-    throw Error("BONUS TODO");
+  return {
+    myStr: tsRec.myStr,
+    myNum: tsRec.myNum,
+    myDict: {...tsRec.myDict}
+  };
 }

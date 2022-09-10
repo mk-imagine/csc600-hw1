@@ -46,7 +46,8 @@ exports.HONOR_PLEDGE = "I pledge on my honor that this assignment is my own work
 exports.SIGNATURE = "Mark Kim"; // TODO: FILL ME IN
 // If you used any resources, please list them here
 exports.RESOURCES_CONSULTED = [
-    "www.google.com", // TODO: FILL ME IN
+    "www.google.com",
+    "https://holycoders.com/javscript-copy-array/"
 ];
 /* ==========================================================================  **
 ## 1. Fun with TypeScript Arrays (40 pts)
@@ -336,7 +337,7 @@ Example:
   >> [1, 2, 3, 4]
 ** ----------------------------------------------------- */
 function copyArray(arr) {
-    throw Error("TODO");
+    return [...arr];
 }
 exports.copyArray = copyArray;
 /* ----------------------------------------------------- **
@@ -364,14 +365,22 @@ for (const [key, val] of Object.entries(dict)) {
 >> "world" 2
 ** ----------------------------------------------------- */
 function copyDictionary(dict) {
-    throw Error("TODO");
+    return { ...dict };
 }
 exports.copyDictionary = copyDictionary;
 function copyTsRecord(tsRec) {
-    throw Error("TODO");
+    return {
+        myStr: tsRec.myStr,
+        myNum: tsRec.myNum,
+        myDict: { ...tsRec.myDict }
+    };
 }
 exports.copyTsRecord = copyTsRecord;
 function copyGenericTsRecord(tsRec) {
-    throw Error("BONUS TODO");
+    return {
+        myStr: tsRec.myStr,
+        myNum: tsRec.myNum,
+        myDict: { ...tsRec.myDict }
+    };
 }
 exports.copyGenericTsRecord = copyGenericTsRecord;
