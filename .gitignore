@@ -1,4 +1,5 @@
 /node_modules
 *.json
 *.js
-!hw.test.js
+!hw1.test.js
+hw1tester.ts
